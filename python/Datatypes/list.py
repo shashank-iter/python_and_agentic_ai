@@ -39,5 +39,6 @@ print(strong_brew)
 
 # from operator import itemgetter
 raw_spice_data = bytearray(b"Cinnamon")
+print(raw_spice_data)
 raw_spice_data = raw_spice_data.replace(b"Cinna", b"Card")
 print(raw_spice_data)
