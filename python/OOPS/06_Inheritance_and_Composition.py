@@ -39,4 +39,5 @@ fancy = FancyBurger()
 
 shop.serve()
 fancy.serve()
+# python binds add_filling() to burger
 fancy.burger.add_filling()
