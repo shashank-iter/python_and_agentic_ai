@@ -1,0 +1,32 @@
+import re
+from typing import Optional
+from pydantic import BaseModel, Field
+ # contains examples on Field
+
+class Employee(BaseModel):
+    id: int
+    name: str = Field(
+        ...,  # three dots means required field
+        min_length=3,
+        max_length=50,
+        description="Employee Name",
+        examples=["Shashank Pandey"],
+    )
+    # Field() needs some first positional argument to know whether that field has a default, and ... is how you say "no, it doesn't."
+    department: Optional[str] = "General"
+    salary: float = Field(
+        ...,
+        ge=10000,  # greater than equals
+        le=100000,
+        description="Annual Salary in USD",
+    )
+
+
+class User(BaseModel):
+    email: str = Field(
+        ...,
+        pattern=r"",  # pydantic renamed regex to pattern
+    )
+    phone: str = Field(..., pattern=r"")
+    age: int = Field(..., ge=0, le=150, description="Age in years")
+    discount: float = Field(..., ge=0, le=100, description="Discout in percentage")
